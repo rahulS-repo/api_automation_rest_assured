@@ -21,4 +21,17 @@ pipeline{
             }
         }
     }
+    post {
+            always {
+                publishHTML([
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
+                    reportDir: 'reports', // Path to the folder containing the report
+                    reportFiles: 'report.html',       // Name of your Extent HTML file
+                    reportName: 'Extent Report',      // Name shown in the Jenkins sidebar
+                    reportTitles: ''
+                ])
+            }
+        }
 }
