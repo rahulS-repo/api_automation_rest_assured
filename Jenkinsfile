@@ -7,7 +7,7 @@ pipeline{
     stages{
         stage('checkout'){
             steps{
-                git branch: 'main', url: ''
+                git branch: 'main', url: 'https://github.com/rahulS-repo/api_automation_rest_assured.git'
             }
         }
         stage('Build'){
