@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="RestAssured Test Suite">
+    <listeners>
+        <listener class-name="listener.ReportListener"/>
+        <listener class-name="listener.AnnotationTransformer"/>
+    </listeners>
+    <test name="User API Tests">
+        <classes>
+            <class name="tests.UserApiTest"/>
+        </classes>
+    </test>
+</suite>
+
