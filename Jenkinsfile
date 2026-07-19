@@ -9,6 +9,9 @@ pipeline{
             steps{
                 git branch: 'main', url: 'https://github.com/rahulS-repo/api_automation_rest_assured.git'
             }
+            script{
+                currentBuild.displayName = "#${BUILD_NUMBER} - user-api - ${env.BRANCH_NAME}"
+                }
         }
         stage('Build'){
             steps{
