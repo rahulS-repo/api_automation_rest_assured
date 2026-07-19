@@ -5,16 +5,16 @@ pipeline {
         maven 'Apache Maven 3.9.16'      // Must match Global Tool Config name
     }
     environment {
-        ENV = 'qa'                       // Default environment
-        BROWSER = 'chrome'               // Default browser
-        GROUP = 'regression'             // Default test group
+        ENV = "${params.ENV ?: 'qa'}"                   // Jenkins parameter or default
+        BROWSER = "${params.BROWSER ?: 'chrome'}"       // Jenkins parameter or default
+        GROUP = "${params.GROUP ?: 'regression'}"       // Jenkins parameter or default
     }
     stages {
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/rahulS-repo/api_automation_rest_assured.git'
                 script {
-                    currentBuild.displayName = "#${env.BUILD_NUMBER} - users-api - ${env.GROUP}"
+                    currentBuild.displayName = "#${env.BUILD_NUMBER} - users-api - -Dgroup=${GROUP}"
                 }
             }
         }
@@ -25,7 +25,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                bat "mvn test -Denv=${env.ENV} -Dbrowser=${env.BROWSER} -Dgroup=${env.GROUP}"
+                bat 'mvn test -Denv=%ENV% -Dbrowser=%BROWSER% -Dgroup=%GROUP%'
             }
         }
     }
