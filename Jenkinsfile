@@ -14,7 +14,7 @@ pipeline {
             steps {
                 git branch: 'main', url: 'https://github.com/rahulS-repo/api_automation_rest_assured.git'
                 script {
-                    currentBuild.displayName = "#${env.BUILD_NUMBER} - users-api - ${env.BRANCH_NAME}"
+                    currentBuild.displayName = "#${env.BUILD_NUMBER} - users-api - ${env.GROUP}"
                 }
             }
         }
