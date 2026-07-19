@@ -17,7 +17,7 @@ pipeline{
         }
         stage('Test'){
             steps{
-                bat 'mvn test'
+                bat 'mvn test -Denv=%ENV% -Dbrowser=%BROWSER% -Dgroup=%GROUP%'
             }
         }
     }
